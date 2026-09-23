@@ -1,0 +1,212 @@
+/*
+Theme Name: Horizon
+Theme URI: https://horizon.macom-digitale.com
+Author: MACOM DIGITALE
+Author URI: https://macom-digitale.com
+Description: Thème de présentation pour Horizon, logiciel de suivi de projet et de rentabilité.
+Version: 1.0
+*/
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  .horizon-page * { box-sizing:border-box; margin:0; padding:0; }
+  .horizon-page {
+    font-family:'Inter', ui-sans-serif, system-ui, sans-serif;
+    color:#181A2E;
+    background:#F1F2F9;
+    line-height:1.6;
+  }
+  .horizon-page a { text-decoration:none; }
+  .horizon-container { max-width:1080px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- Hero ---------- */
+  .horizon-hero {
+    background:linear-gradient(135deg, #4F46E5, #7C3AED);
+    padding:80px 24px 100px 24px;
+    text-align:center;
+    color:#fff;
+  }
+  .horizon-hero-logo { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:36px; }
+  .horizon-hero-logo svg { width:48px; height:48px; }
+  .horizon-hero-logo span { font-size:30px; font-weight:800; letter-spacing:-0.02em; }
+  .horizon-hero h1 { font-size:42px; font-weight:800; letter-spacing:-0.02em; line-height:1.15; max-width:720px; margin:0 auto 20px auto; }
+  .horizon-hero p { font-size:18px; color:rgba(255,255,255,0.88); max-width:560px; margin:0 auto 36px auto; }
+  .horizon-cta {
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; color:#4F46E5; font-weight:700; font-size:16px;
+    padding:14px 28px; border-radius:12px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.18);
+  }
+  .horizon-cta-sub { display:block; margin-top:14px; font-size:13px; color:rgba(255,255,255,0.75); }
+
+  /* ---------- Dashboard screenshot / carrousel ---------- */
+  .horizon-screenshot-wrap { margin:-64px auto 0 auto; max-width:1000px; padding:0 24px; }
+  .horizon-carousel { position:relative; }
+  .horizon-carousel-track {
+    position:relative; border-radius:16px; overflow:hidden;
+    box-shadow:0 24px 60px rgba(24,26,46,0.25);
+    border:1px solid rgba(255,255,255,0.4);
+    background:#F1F2F9;
+  }
+  .horizon-carousel-slide {
+    width:100%; height:auto; display:none; margin:0; vertical-align:top;
+  }
+  .horizon-carousel-slide.is-active { display:block; }
+  .horizon-carousel-arrow {
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:40px; height:40px; border-radius:50%; border:none;
+    background:rgba(255,255,255,0.9); color:#4F46E5; font-size:22px; font-weight:700;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 12px rgba(24,26,46,0.18);
+  }
+  .horizon-carousel-arrow:hover { background:#fff; }
+  .horizon-carousel-arrow.prev { left:16px; }
+  .horizon-carousel-arrow.next { right:16px; }
+  .horizon-carousel-dots { display:flex; justify-content:center; gap:8px; margin-top:18px; }
+  .horizon-carousel-dot {
+    width:9px; height:9px; border-radius:50%; border:none; padding:0;
+    background:#D4D6E8; cursor:pointer;
+  }
+  .horizon-carousel-dot.is-active { background:#4F46E5; width:22px; border-radius:5px; }
+
+  /* ---------- Problème ---------- */
+  .horizon-intro { padding:100px 24px 60px 24px; text-align:center; }
+  .horizon-intro p { max-width:680px; margin:0 auto; font-size:17px; color:#4B4E6B; }
+  .horizon-intro strong { color:#181A2E; }
+
+  /* ---------- Fonctionnalités ---------- */
+  .horizon-features { padding:40px 24px 90px 24px; }
+  .horizon-features h2 { text-align:center; font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:48px; }
+  .horizon-features-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  .horizon-feature-card {
+    background:#fff; border:1px solid #E4E5F1; border-radius:16px; padding:28px;
+    box-shadow:0 1px 3px rgba(24,26,46,0.06);
+  }
+  .horizon-feature-icon {
+    width:46px; height:46px; border-radius:12px;
+    background:linear-gradient(135deg, #6366F1, #7C3AED);
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+  }
+  .horizon-feature-card h3 { font-size:16px; font-weight:700; margin-bottom:8px; }
+  .horizon-feature-card p { font-size:14px; color:#6B6E8C; }
+
+  /* ---------- Pour qui ---------- */
+  .horizon-for-who { background:#fff; padding:80px 24px; border-top:1px solid #E4E5F1; border-bottom:1px solid #E4E5F1; }
+  .horizon-for-who-inner { max-width:780px; margin:0 auto; text-align:center; }
+  .horizon-for-who h2 { font-size:26px; font-weight:800; letter-spacing:-0.02em; margin-bottom:18px; }
+  .horizon-for-who p { font-size:16px; color:#4B4E6B; }
+  .horizon-tags { display:flex; gap:10px; justify-content:center; margin-top:24px; flex-wrap:wrap; }
+  .horizon-tag { background:#EEF0FF; color:#4F46E5; font-size:13px; font-weight:600; padding:6px 16px; border-radius:20px; }
+
+  /* ---------- CTA final ---------- */
+  .horizon-final-cta { padding:90px 24px; text-align:center; }
+  .horizon-final-cta h2 { font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:12px; }
+  .horizon-final-cta p { color:#6B6E8C; margin-bottom:30px; }
+  .horizon-cta-dark {
+    display:inline-flex; align-items:center; gap:8px;
+    background:linear-gradient(135deg, #4F46E5, #7C3AED); color:#fff; font-weight:700; font-size:16px;
+    padding:14px 28px; border-radius:12px;
+    box-shadow:0 8px 24px rgba(79,70,229,0.3);
+  }
+
+  @media (max-width: 760px) {
+    .horizon-hero h1 { font-size:30px; }
+    .horizon-features-grid { grid-template-columns:1fr; }
+    .horizon-screenshot-wrap { margin-top:-40px; }
+  }
+
+
+
+/* ---------- Footer commun (footer.php) : logo, liens légaux, copyright ---------- */
+.horizon-footer { background:linear-gradient(135deg, #4F46E5, #7C3AED); border-top:1px solid #E4E5F1; padding:48px 24px 36px 24px; }
+.horizon-footer-inner { max-width:1080px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:18px; text-align:center; }
+.horizon-footer-logo { display:flex; align-items:center; gap:8px; font-weight:800; font-size:17px; color:#fff; }
+.horizon-footer-links { display:flex; gap:22px; flex-wrap:wrap; justify-content:center; }
+.horizon-footer-links a { color:rgba(255,255,255,0.85); font-size:14px; font-weight:500; }
+.horizon-footer-links a:hover { color:#fff; }
+.horizon-footer-link-group { display:inline-flex; align-items:center; gap:6px; }
+.horizon-footer-pdf-link {
+  font-size:10px !important; font-weight:700 !important; letter-spacing:0.03em;
+  color:rgba(255,255,255,0.55) !important; border:1px solid rgba(255,255,255,0.35);
+  border-radius:4px; padding:1px 5px;
+}
+.horizon-footer-pdf-link:hover { color:#fff !important; border-color:#fff; }
+.horizon-footer-copy { color:rgba(255,255,255,0.75); font-size:12.5px; }
+.horizon-footer-copy strong { color:#fff; }
+.horizon-footer-brand-link { text-decoration:none; }
+.horizon-footer-brand-link:hover strong { color:#fff; text-decoration:underline; }
+
+/* ---------- Comment ça marche ---------- */
+.horizon-steps { padding:70px 24px; background:#fff; border-top:1px solid #E4E5F1; border-bottom:1px solid #E4E5F1; }
+.horizon-steps h2 { text-align:center; font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:44px; }
+.horizon-steps-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; max-width:900px; margin:0 auto; }
+.horizon-step { text-align:center; }
+.horizon-step-num { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg, #6366F1, #7C3AED); color:#fff; font-weight:800; font-size:17px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px auto; }
+.horizon-step h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
+.horizon-step p { font-size:14px; color:#6B6E8C; }
+
+/* ---------- Tarif ---------- */
+.horizon-pricing { padding:90px 24px; text-align:center; }
+.horizon-pricing h2 { font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:40px; }
+.horizon-pricing-card { max-width:380px; margin:0 auto; background:#fff; border:1px solid #E4E5F1; border-radius:20px; padding:40px 32px; box-shadow:0 4px 20px rgba(24,26,46,0.06); }
+.horizon-pricing-amount { font-size:44px; font-weight:800; letter-spacing:-0.02em; color:#181A2E; }
+.horizon-pricing-amount span { font-size:16px; font-weight:500; color:#6B6E8C; }
+.horizon-pricing-sub { color:#6B6E8C; font-size:13px; margin-bottom:24px; }
+.horizon-pricing-features { list-style:none; text-align:left; margin:0 0 32px 0; padding:0; }
+.horizon-pricing-features li { padding:8px 0 8px 26px; position:relative; font-size:14px; color:#333; border-bottom:1px solid #F1F2F9; }
+.horizon-pricing-features li:before { content:"✓"; position:absolute; left:0; color:#16A34A; font-weight:700; }
+.horizon-pricing-features li:last-child { border-bottom:none; }
+.horizon-pricing-note { margin-top:18px; font-size:12px; color:#6B6E8C; }
+.horizon-pricing-card .horizon-cta-dark { margin-top:8px; }
+
+/* ---------- Sécurité renforcée ---------- */
+.horizon-security { padding:20px 24px 90px 24px; }
+.horizon-security h2 { text-align:center; font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:32px; }
+.horizon-security-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; max-width:840px; margin:0 auto; }
+.horizon-security-item {
+  display:flex; align-items:center; gap:16px;
+  background:linear-gradient(135deg, #4F46E5, #7C3AED); border:none; border-radius:16px;
+  padding:22px 26px;
+}
+.horizon-security-item svg { flex-shrink:0; stroke:#fff; }
+.horizon-security-item p { margin:0; font-size:14px; color:#fff; line-height:1.55; text-align:left; }
+
+@media (max-width: 760px) {
+  .horizon-security-grid { grid-template-columns:1fr; }
+}
+
+/* ---------- FAQ ---------- */
+.horizon-faq { padding:80px 24px; background:#fff; border-top:1px solid #E4E5F1; }
+.horizon-container-narrow { max-width:720px; margin:0 auto; }
+.horizon-faq h2 { text-align:center; font-size:28px; font-weight:800; letter-spacing:-0.02em; margin-bottom:36px; }
+.horizon-faq-item { border-bottom:1px solid #E4E5F1; padding:18px 0; }
+.horizon-faq-item summary { cursor:pointer; font-weight:600; font-size:15px; color:#181A2E; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+.horizon-faq-item summary::-webkit-details-marker { display:none; }
+.horizon-faq-item summary:after { content:"+"; font-size:20px; color:#4F46E5; font-weight:400; }
+.horizon-faq-item[open] summary:after { content:"–"; }
+.horizon-faq-item p { margin-top:12px; font-size:14px; color:#6B6E8C; line-height:1.6; }
+.horizon-faq-empty { text-align:center; color:#6B6E8C; font-size:14px; }
+
+@media (max-width: 760px) {
+  .horizon-steps-grid { grid-template-columns:1fr; gap:28px; }
+}
+
+/* ---------- Pages légales (page.php) ---------- */
+.horizon-legal-page { padding:60px 24px 100px 24px; }
+.horizon-legal-container { max-width:760px; margin:0 auto; }
+.horizon-legal-head { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:32px; }
+.horizon-legal-container h1 { font-size:32px; font-weight:800; letter-spacing:-0.02em; margin-bottom:0; }
+.horizon-legal-pdf-btn {
+  display:inline-flex; align-items:center; gap:8px; flex-shrink:0;
+  background:#EEF0FF; color:#4F46E5; font-weight:600; font-size:14px;
+  padding:10px 18px; border-radius:10px; white-space:nowrap;
+}
+.horizon-legal-pdf-btn:hover { background:#4F46E5; color:#fff; }
+.horizon-legal-content { font-size:15px; line-height:1.7; color:#333; }
+.horizon-legal-content h2 { font-size:20px; font-weight:700; margin:32px 0 12px 0; color:#181A2E; }
+.horizon-legal-content p { margin-bottom:14px; }
+.horizon-legal-content ul { margin:0 0 14px 20px; }
+.horizon-legal-content table { width:100%; border-collapse:collapse; margin-bottom:20px; }
+.horizon-legal-content th, .horizon-legal-content td { border:1px solid #E4E5F1; padding:8px 12px; text-align:left; font-size:14px; }
+.horizon-legal-content th { background:#F5F6FB; }
