@@ -210,3 +210,16 @@ Version: 1.0
 .horizon-legal-content table { width:100%; border-collapse:collapse; margin-bottom:20px; }
 .horizon-legal-content th, .horizon-legal-content td { border:1px solid #E4E5F1; padding:8px 12px; text-align:left; font-size:14px; }
 .horizon-legal-content th { background:#F5F6FB; }
+
+.horizon-footer-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.horizon-footer-badge img {
+  display: block;
+  width: 200px;
+  height: auto;
+}
