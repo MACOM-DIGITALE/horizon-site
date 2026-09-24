@@ -210,21 +210,43 @@ Version: 1.0
 .horizon-legal-content table { width:100%; border-collapse:collapse; margin-bottom:20px; }
 .horizon-legal-content th, .horizon-legal-content td { border:1px solid #E4E5F1; padding:8px 12px; text-align:left; font-size:14px; }
 .horizon-legal-content th { background:#F5F6FB; }
+.horizon-footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.horizon-footer-left {
+  flex: 1;
+}
 
 .horizon-footer-badge {
+  flex-shrink: 0;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  margin: 10px 0 0;
 }
 
 .horizon-footer-badge a {
-  display: inline-block;
+  display: block;
   line-height: 0;
 }
 
 .horizon-footer-badge img {
   display: block;
-  width: 120px;
+  width: 100px;
   height: auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .horizon-footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .horizon-footer-badge {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
 }
