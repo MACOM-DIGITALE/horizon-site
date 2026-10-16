@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calculateur de prix et de marge pour freelances et agences | Horizon</title>
+<meta name="description" content="Quel prix demander pour tenir votre marge ? Saisissez votre coût horaire, la marge visée et le nombre d'heures : le calculateur d'Horizon donne le prix minimum, hors taxes et TTC." />
+<meta name="color-scheme" content="light only" />
+<meta name="theme-color" content="#4F46E5" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  /*
+    Page à déposer dans le dépôt du site vitrine (horizon-site), par exemple sous le nom calculateur.html.
+    Les formules sont celles de l'application : prix = heures × coût horaire ÷ (1 − marge) ;
+    marge = prix − heures × coût horaire. Rien n'est enregistré ni envoyé : tout se calcule dans le navigateur.
+  */
+  :root{
+    --bg:#F7F6FD; --paper:#FFFFFF; --ink:#181A2E; --ink-soft:#5B5E7E; --rule:#E7E3F8;
+    --primary:#4F46E5; --primary-dark:#4338CA; --violet:#7C3AED;
+    --on-primary:#FFFFFF; --on-primary-soft:#E4E2FF;
+    --good:#166534; --good-soft:#DCFCE7; --warn:#92400E; --warn-soft:#FEF3C7; --bad:#991B1B; --bad-soft:#FEE2E2;
+  }
+  *{ box-sizing:border-box; }
+  html{ color-scheme:light only; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'Inter', ui-sans-serif, system-ui, sans-serif; font-size:16px; line-height:1.55; }
+  a{ color:var(--primary); }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 24px; }
+  header.top{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 0; }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; letter-spacing:-0.02em; color:var(--ink); text-decoration:none; }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:11px 20px; border-radius:12px; border:0; font:inherit; font-weight:600; font-size:15px; text-decoration:none; cursor:pointer; background:linear-gradient(180deg,#6366F1 0%,#4F46E5 55%,#4338CA 100%); color:var(--on-primary); box-shadow:0 6px 14px rgba(79,70,229,.26); }
+  .btn:hover{ box-shadow:0 10px 20px rgba(79,70,229,.34); }
+  .btn.ghost{ background:transparent; color:var(--primary); box-shadow:none; border:1.5px solid var(--primary); padding:9px 16px; }
+  :focus-visible{ outline:3px solid var(--violet); outline-offset:2px; border-radius:6px; }
+  h1{ font-size:clamp(30px, 5vw, 46px); line-height:1.1; letter-spacing:-0.03em; font-weight:800; margin:34px 0 14px; max-width:20ch; }
+  .lede{ font-size:18px; color:var(--ink-soft); max-width:56ch; margin:0 0 34px; }
+  .tool{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,420px); gap:48px; align-items:start; }
+  form{ display:flex; flex-direction:column; gap:22px; }
+  label{ display:flex; flex-direction:column; gap:6px; font-weight:600; font-size:15px; }
+  .hint{ font-weight:400; font-size:14px; color:var(--ink-soft); }
+  .field{ display:flex; align-items:center; gap:10px; }
+  input[type=text]{ width:100%; max-width:180px; font:inherit; font-weight:600; font-size:20px; font-variant-numeric:tabular-nums; padding:10px 14px; border:1.5px solid #B9B5E8; border-radius:12px; background:var(--paper); color:var(--ink); }
+  input[type=text]:focus{ border-color:var(--primary); outline:3px solid #D9D6FB; outline-offset:0; }
+  .unit{ font-weight:500; color:var(--ink-soft); }
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .optional{ border-top:1px solid var(--rule); padding-top:22px; }
+  details{ border-top:1px solid var(--rule); padding-top:16px; }
+  summary{ cursor:pointer; font-weight:600; color:var(--primary); }
+  details .grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+  details input[type=text]{ font-size:17px; max-width:none; }
+  .helper-out{ display:flex; flex-wrap:wrap; align-items:center; gap:12px; font-weight:600; }
+  .result{ background:var(--primary); color:var(--on-primary); border-radius:22px; padding:30px 30px 26px; position:sticky; top:20px; }
+  .result h2{ margin:0 0 6px; font-size:17px; font-weight:600; color:var(--on-primary-soft); }
+  .big{ font-size:clamp(44px, 7vw, 64px); font-weight:800; letter-spacing:-0.035em; line-height:1.05; font-variant-numeric:tabular-nums; }
+  .ttc{ font-size:20px; font-weight:600; margin-top:4px; }
+  .formula{ margin:16px 0 0; padding-top:16px; border-top:1px solid rgba(255,255,255,.28); font-size:15px; color:var(--on-primary-soft); }
+  .verdict{ margin-top:18px; padding:14px 16px; border-radius:14px; font-size:15px; font-weight:500; }
+  .verdict strong{ display:block; font-size:22px; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; }
+  .verdict.good{ background:var(--good-soft); color:var(--good); }
+  .verdict.warn{ background:var(--warn-soft); color:var(--warn); }
+  .verdict.bad{ background:var(--bad-soft); color:var(--bad); }
+  .cta{ margin:64px 0 0; padding:34px 0; border-top:1px solid var(--rule); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; }
+  .cta p{ margin:0; font-size:22px; font-weight:700; letter-spacing:-0.02em; max-width:30ch; }
+  .cta small{ display:block; margin-top:6px; font-size:15px; font-weight:400; letter-spacing:0; color:var(--ink-soft); }
+  footer{ padding:8px 0 48px; color:var(--ink-soft); font-size:14px; max-width:70ch; }
+  @media (max-width:820px){ .tool{ grid-template-columns:1fr; gap:30px; } .result{ position:static; order:-1; } }
+  @media (max-width:480px){ .row2, details .grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/" aria-label="Horizon, accueil">
+      <svg width="30" height="30" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect width="34" height="34" rx="9" fill="url(#g)"/><path d="M9.5 21.5A7.5 7.5 0 0 1 24.5 21.5Z" fill="white"/><rect x="5.5" y="21.5" width="23" height="2.4" rx="1.2" fill="white"/><defs><linearGradient id="g" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs></svg>
+      Horizon
+    </a>
+    <a class="btn ghost" id="cta-top" href="#">Essayer Horizon</a>
+  </header>
+
+  <main>
+    <h1>Quel prix demander pour tenir votre marge ?</h1>
+    <p class="lede">Trois chiffres suffisent. Le calcul se fait ici, dans votre navigateur : rien n'est enregistré.</p>
+
+    <div class="tool">
+      <form id="calc" autocomplete="off" novalidate>
+        <label for="cost">Votre coût horaire
+          <span class="field"><input id="cost" type="text" inputmode="decimal" value="40" aria-describedby="cost-hint" /><span class="unit">€ par heure</span></span>
+          <span class="hint" id="cost-hint">Ce que vous coûte une heure de travail : salaire, charges, loyer, outils, ramenés à une heure réellement facturable.</span>
+        </label>
+
+        <details id="helper">
+          <summary>Je ne connais pas mon coût horaire</summary>
+          <div class="grid">
+            <label for="h-charges">Charges annuelles
+              <span class="field"><input id="h-charges" type="text" inputmode="decimal" value="42000" /><span class="unit">€</span></span></label>
+            <label for="h-days">Jours travaillés par an
+              <span class="field"><input id="h-days" type="text" inputmode="decimal" value="218" /></span></label>
+            <label for="h-hours">Heures par jour
+              <span class="field"><input id="h-hours" type="text" inputmode="decimal" value="7" /></span></label>
+            <label for="h-rate">Part du temps facturable
+              <span class="field"><input id="h-rate" type="text" inputmode="decimal" value="70" /><span class="unit">%</span></span></label>
+          </div>
+          <div class="helper-out"><span>Coût horaire estimé : <span id="h-result">—</span></span><button type="button" class="btn ghost" id="h-use">Utiliser ce coût</button></div>
+          <p class="hint">Charges annuelles : votre rémunération, les cotisations, le local, les assurances, les logiciels, le comptable, le matériel. Entre 60 et 70 % du temps travaillé est un taux de facturation réaliste.</p>
+        </details>
+
+        <div class="row2">
+          <label for="margin">Marge visée
+            <span class="field"><input id="margin" type="text" inputmode="decimal" value="60" /><span class="unit">%</span></span>
+          </label>
+          <label for="hours">Heures estimées
+            <span class="field"><input id="hours" type="text" inputmode="decimal" value="20" /><span class="unit">h</span></span>
+          </label>
+        </div>
+
+        <div class="optional">
+          <label for="sold">Vous avez déjà un prix ? <span class="hint">Facultatif : saisissez-le pour connaître la marge qu'il laisse, hors taxes.</span>
+            <span class="field"><input id="sold" type="text" inputmode="decimal" placeholder="1 500" /><span class="unit">€ HT</span></span>
+          </label>
+        </div>
+
+        <label for="vat">TVA appliquée
+          <span class="field"><input id="vat" type="text" inputmode="decimal" value="20" style="max-width:110px" /><span class="unit">%</span></span>
+        </label>
+      </form>
+
+      <section class="result" aria-live="polite" aria-labelledby="r-title">
+        <h2 id="r-title">Prix minimum à demander</h2>
+        <div class="big" id="r-ht">—</div>
+        <div class="ttc" id="r-ttc"></div>
+        <p class="formula" id="r-formula">Renseignez le coût horaire, la marge et les heures.</p>
+        <div class="verdict" id="r-verdict" hidden></div>
+      </section>
+    </div>
+
+    <div class="cta">
+      <p>Ce calcul, projet par projet, en temps réel.<small>Horizon relie le temps passé à ce que chaque projet rapporte, et vous prévient avant qu'il soit trop tard.</small></p>
+      <a class="btn" id="cta-main" href="#">Essayer Horizon</a>
+    </div>
+  </main>
+
+  <footer>
+    Estimation indicative. La marge est calculée sur le prix de vente hors taxes : prix = heures × coût horaire ÷ (1 − marge). Les achats de matériaux revendus au prix coûtant ne changent pas la marge. Ceci n'est pas un conseil financier, juridique ni fiscal ; faites valider vos chiffres par votre expert-comptable.
+  </footer>
+</div>
+
+<script>
+  // À l'ouverture au public (1er janvier 2027), remplacer par : 'https://app.horizon-suivi-projets.fr'
+  const CTA_URL = 'bientot.html';
+  document.getElementById('cta-top').href = CTA_URL;
+  document.getElementById('cta-main').href = CTA_URL;
+
+  const $ = (id) => document.getElementById(id);
+  // « 1 500,50 », « 1500.5 » et « 1 500 » sont tous compris
+  const num = (el) => { const v = parseFloat(String(el.value).replace(/\s/g, '').replace(',', '.')); return Number.isFinite(v) ? v : NaN; };
+  const eur = (n) => new Intl.NumberFormat('fr-FR', { style:'currency', currency:'EUR', maximumFractionDigits: n >= 100 ? 0 : 2, minimumFractionDigits: 0 }).format(n);
+  const eur2 = (n) => new Intl.NumberFormat('fr-FR', { style:'currency', currency:'EUR', minimumFractionDigits:2, maximumFractionDigits:2 }).format(n);
+  const pctFmt = (n) => n.toFixed(1).replace('.', ',') + ' %';
+
+  function helper(){
+    const charges = num($('h-charges')), days = num($('h-days')), hpd = num($('h-hours')), rate = Math.min(Math.max(num($('h-rate')), 1), 100);
+    const billable = days * hpd * (rate / 100);
+    const cost = billable > 0 && charges >= 0 ? charges / billable : NaN;
+    $('h-result').textContent = Number.isFinite(cost) ? eur2(cost) + ' par heure' : '—';
+    return cost;
+  }
+
+  function show(el, cls, html){ el.hidden = false; el.className = 'verdict ' + cls; el.innerHTML = html; }
+
+  function compute(){
+    helper();
+    const cost = num($('cost')), hours = num($('hours')), vat = Number.isFinite(num($('vat'))) ? num($('vat')) : 0;
+    const target = Math.min(Math.max(Number.isFinite(num($('margin'))) ? num($('margin')) : 0, 0), 95);   // plafonné à 95 %, comme dans l'application
+    const sold = num($('sold'));
+    const ht = $('r-ht'), ttc = $('r-ttc'), formula = $('r-formula'), verdict = $('r-verdict');
+    verdict.hidden = true;
+    if(!(cost > 0) || !(hours > 0)){
+      ht.textContent = '—'; ttc.textContent = ''; formula.textContent = 'Renseignez le coût horaire, la marge et les heures.'; return;
+    }
+    const price = hours * cost / (1 - target / 100);
+    ht.textContent = eur(price) + ' HT';
+    ttc.textContent = eur(price * (1 + vat / 100)) + ' TTC';
+    formula.textContent = hours.toString().replace('.', ',') + ' h × ' + eur2(cost) + ' ÷ (1 − ' + String(target).replace('.', ',') + ' %) = ' + eur2(price);
+    if(sold > 0){
+      const margin = sold - hours * cost, pct = margin / sold * 100;
+      if(pct < 0) show(verdict, 'bad', '<strong>' + pctFmt(pct) + '</strong>Ce prix ne couvre pas votre temps de travail (' + eur(margin) + '). Pour viser ' + target + ' %, demandez au moins ' + eur(price) + ' HT.');
+      else if(Math.round(pct * 10) / 10 >= target) show(verdict, 'good', '<strong>' + pctFmt(pct) + '</strong>Objectif atteint : ce prix laisse ' + eur(margin) + ' de marge.');
+      else show(verdict, 'warn', '<strong>' + pctFmt(pct) + '</strong>Sous votre objectif de ' + target + ' %. Ce prix laisse ' + eur(margin) + ' ; pour atteindre l\'objectif, demandez au moins ' + eur(price) + ' HT.');
+    }
+  }
+
+  document.querySelectorAll('input').forEach((i) => i.addEventListener('input', compute));
+  $('h-use').addEventListener('click', () => { const c = helper(); if(Number.isFinite(c)){ $('cost').value = (Math.round(c * 100) / 100).toString().replace('.', ','); compute(); $('cost').focus(); } });
+  compute();
+</script>
+</body>
+</html>

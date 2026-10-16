@@ -45,6 +45,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='horizon-style-css' href='assets/style.css' media='all' />
+<!-- Lien vers le calculateur (ajout) : reprend la couleur du texte autour pour rester lisible sur fond clair ou foncé. -->
+<style id="horizon-calc-link-css">
+.horizon-calc-link{ display:inline-block; margin-top:14px; color:inherit; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+.horizon-calc-link:hover{ text-decoration-thickness:2px; }
+.horizon-calc-link:focus-visible{ outline:3px solid currentColor; outline-offset:3px; border-radius:4px; }
+</style>
 </head>
 <body class="home wp-singular page-template-default page page-id-13 wp-theme-Horizon">
 <div class="horizon-page">
@@ -59,6 +65,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       Essayer Horizon gratuitement →
     </a>
     <span class="horizon-cta-sub">7 jours d'essai gratuit</span>
+    <!-- Calculateur (ajout) : à retirer si la page calculateur n'est pas publiée -->
+    <a href="calculateur-horizon.html" class="horizon-calc-link">Calculer gratuitement mon prix minimum →</a>
   </section>
 
   <!-- SCREENSHOT / CARROUSEL -->
@@ -188,6 +196,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <a href="bientot.html" class="horizon-cta-dark">
           Démarrer mon essai gratuit de 7 jours →
         </a>
+        <!-- Calculateur (ajout) : à retirer si la page calculateur n'est pas publiée -->
+        <a href="calculateur-horizon.html" class="horizon-calc-link">Pas sûr de votre prix de vente ? Calculez votre prix minimum</a>
       </div>
     </div>
   </section>
@@ -271,6 +281,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         </div>
 
         <nav class="horizon-footer-links">
+          <!-- Calculateur (ajout) : à retirer si la page calculateur n'est pas publiée -->
+          <a href="calculateur-horizon.html">Calculateur</a>
           <a href="docs/cgv-Horizon.pdf" target="_blank" rel="noopener">CGV</a>
           <a href="docs/politique-confidentialite-Horizon.pdf" target="_blank" rel="noopener">Confidentialité</a>
           <a href="docs/dpa-Horizon.pdf" target="_blank" rel="noopener">DPA</a>
@@ -302,3 +314,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     </div>
   </div>
 </footer>
+</div>
+</body>
+</html>
