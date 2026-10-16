@@ -45,23 +45,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 
 <link rel='stylesheet' id='horizon-style-css' href='assets/style.css' media='all' />
-<!-- Boutons du calculateur (ajout). Les règles sont préfixées par .horizon-page et utilisent !important pour ne pas être écrasées par le style du thème (assets/style.css). -->
+<!-- Boutons du calculateur (ajout), dans l'accueil et dans la carte du tarif. Règles préfixées par .horizon-page et en !important pour ne pas être écrasées par le style du thème (assets/style.css). -->
 <style id="horizon-calc-link-css">
-.horizon-page a.horizon-calc-link, .horizon-page a.horizon-calc-top{ display:inline-block !important; padding:10px 18px !important; border-radius:12px !important; background:#FFFFFF !important; color:#4F46E5 !important; border:1.5px solid #4F46E5 !important; font-weight:600 !important; font-size:15px; line-height:1.3; text-decoration:none !important; box-shadow:0 2px 10px rgba(24,26,46,.18); }
-.horizon-page a.horizon-calc-link{ margin-top:14px; }
-.horizon-page a.horizon-calc-top{ position:absolute; top:16px; right:16px; z-index:50; padding:8px 14px !important; font-size:14px; }
-.horizon-page a.horizon-calc-link:hover, .horizon-page a.horizon-calc-top:hover{ background:#EEF0FF !important; }
+.horizon-page a.horizon-calc-link{ display:inline-block !important; margin-top:14px; padding:10px 18px !important; border-radius:12px !important; background:#FFFFFF !important; color:#4F46E5 !important; border:1.5px solid #4F46E5 !important; font-weight:600 !important; font-size:15px; line-height:1.3; text-decoration:none !important; box-shadow:0 2px 10px rgba(24,26,46,.18); }
+.horizon-page a.horizon-calc-link:hover{ background:#EEF0FF !important; }
 /* Dans le bloc d'accueil (fond indigo) : bouton secondaire à contour blanc, pour ne pas concurrencer le bouton principal. */
 .horizon-page .horizon-hero a.horizon-calc-link{ background:transparent !important; color:#FFFFFF !important; border-color:#FFFFFF !important; box-shadow:none; }
 .horizon-page .horizon-hero a.horizon-calc-link:hover{ background:rgba(255,255,255,.16) !important; }
-.horizon-page a.horizon-calc-link:focus-visible, .horizon-page a.horizon-calc-top:focus-visible{ outline:3px solid #FFFFFF; outline-offset:2px; box-shadow:0 0 0 5px #7C3AED; }
-@media (max-width:480px){ .horizon-page a.horizon-calc-top{ top:12px; right:12px; padding:7px 11px !important; font-size:13px; } }
+.horizon-page a.horizon-calc-link:focus-visible{ outline:3px solid #FFFFFF; outline-offset:2px; box-shadow:0 0 0 5px #7C3AED; }
 </style>
 </head>
 <body class="home wp-singular page-template-default page page-id-13 wp-theme-Horizon">
 <div class="horizon-page">
-  <!-- Calculateur (ajout) : bouton en haut à droite ; à retirer si la page calculateur n'est pas publiée -->
-  <a href="calculateur-horizon.html" class="horizon-calc-top">Calculateur gratuit</a>
   <!-- HERO -->
   <section class="horizon-hero">
     <div class="horizon-hero-logo">
