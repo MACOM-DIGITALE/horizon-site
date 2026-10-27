@@ -53,6 +53,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .horizon-page .horizon-hero a.horizon-calc-link{ background:transparent !important; color:#FFFFFF !important; border-color:#FFFFFF !important; box-shadow:none; }
 .horizon-page .horizon-hero a.horizon-calc-link:hover{ background:rgba(255,255,255,.16) !important; }
 .horizon-page a.horizon-calc-link:focus-visible{ outline:3px solid #FFFFFF; outline-offset:2px; box-shadow:0 0 0 5px #7C3AED; }
+.horizon-page .horizon-pricing-grid{ display:flex; flex-wrap:wrap; gap:24px; justify-content:center; align-items:stretch; }
+.horizon-page .horizon-pricing-grid .horizon-pricing-card{ flex:1 1 280px; max-width:380px; margin:0; }
+.horizon-page .horizon-pricing-name{ margin:0 0 6px 0; font-size:15px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+.horizon-page .horizon-pricing-note{ margin:18px auto 0 auto; max-width:640px; text-align:center; font-size:14px; line-height:1.5; }
 </style>
 </head>
 <body class="home wp-singular page-template-default page page-id-13 wp-theme-Horizon">
@@ -176,7 +180,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <div class="horizon-feature-card">
           <div class="horizon-feature-icon"><svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><rect width="34" height="34" rx="9" fill="url(#logoGrad)"/><path d="M9.5 21.5A7.5 7.5 0 0 1 24.5 21.5Z" fill="white"/><rect x="5.5" y="21.5" width="23" height="2.4" rx="1.2" fill="white"/><defs><linearGradient id="logoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs></svg></div>
           <h3>Multi-utilisateurs</h3>
-          <p>Toute l'équipe travaille sur les mêmes données, en temps réel, avec des rôles admin/membre.</p>
+          <p>Avec la formule Équipe, jusqu'à 10 membres travaillent sur les mêmes données, en temps réel, avec des rôles admin/membre.</p>
         </div>
       </div>
     </div>
@@ -187,21 +191,41 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <section class="horizon-pricing">
     <div class="horizon-container">
       <h2>Un tarif simple, sans surprise</h2>
-      <div class="horizon-pricing-card">
-        <div class="horizon-pricing-amount">12&nbsp;€<span class="horizon-pricing-period">/mois TTC</span></div>
-        <p class="horizon-pricing-sub">Accès complet, sans engagement</p>
-        <ul class="horizon-pricing-features">
-          <li>Suivi du temps illimité</li>
-          <li>Clients, devis et factures illimités</li>
-          <li>Toute l'équipe incluse</li>
-          <li>Résiliable à tout moment, sans préavis</li>
-        </ul>
-        <a href="bientot.html" class="horizon-cta-dark">
-          Démarrer mon essai gratuit de 7 jours →
-        </a>
+      <div class="horizon-pricing-grid">
+        <div class="horizon-pricing-card">
+          <p class="horizon-pricing-name">Solo</p>
+          <div class="horizon-pricing-amount">12&nbsp;€<span class="horizon-pricing-period">/mois TTC</span></div>
+          <p class="horizon-pricing-sub">Pour travailler seul(e)</p>
+          <ul class="horizon-pricing-features">
+            <li>1 membre</li>
+            <li>Suivi du temps illimité</li>
+            <li>Clients, devis et factures illimités</li>
+            <li>Résiliable à tout moment, sans préavis</li>
+          </ul>
+          <a href="bientot.html" class="horizon-cta-dark">
+            Démarrer mon essai gratuit de 7 jours →
+          </a>
+        </div>
+        <div class="horizon-pricing-card">
+          <p class="horizon-pricing-name">Équipe</p>
+          <div class="horizon-pricing-amount">29&nbsp;€<span class="horizon-pricing-period">/mois TTC</span></div>
+          <p class="horizon-pricing-sub">Pour une équipe, jusqu'à 10 membres</p>
+          <ul class="horizon-pricing-features">
+            <li>Jusqu'à 10 membres</li>
+            <li>Suivi du temps illimité</li>
+            <li>Clients, devis et factures illimités</li>
+            <li>Résiliable à tout moment, sans préavis</li>
+          </ul>
+          <a href="bientot.html" class="horizon-cta-dark">
+            Démarrer mon essai gratuit de 7 jours →
+          </a>
+        </div>
+      </div>
+      <p class="horizon-pricing-note">7 jours d'essai gratuit avec les deux formules. Paiement mensuel, ou annuel avec 20&nbsp;% de réduction.</p>
+      <p class="horizon-pricing-note">
         <!-- Calculateur (ajout) : à retirer si la page calculateur n'est pas publiée -->
         <a href="calculateur-horizon.html" class="horizon-calc-link">Pas sûr de votre prix de vente ? Calculez votre prix minimum</a>
-      </div>
+      </p>
     </div>
   </section>
 
@@ -257,8 +281,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
           </details>
                   <details class="horizon-faq-item">
-            <summary>Puis-je inviter toute mon équipe ?</summary>
-            <div class="horizon-faq-answer"><p>Oui, sans limite de nombre — chaque membre de votre entreprise peut avoir son propre accès, inclus dans l&rsquo;abonnement.</p>
+            <summary>Puis-je inviter mon équipe ?</summary>
+            <div class="horizon-faq-answer"><p>Oui, avec la formule Équipe : jusqu&rsquo;à 10 membres, chacun avec son propre accès. La formule Solo est prévue pour une seule personne.</p>
+</div>
+          </details>
+                  <details class="horizon-faq-item">
+            <summary>Puis-je changer de formule ?</summary>
+            <div class="horizon-faq-answer"><p>Oui, vous pouvez passer de la formule Solo à la formule Équipe depuis votre espace de compte, rubrique « Gérer mon abonnement ».</p>
 </div>
           </details>
               </div>
