@@ -57,6 +57,26 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .horizon-page .horizon-pricing-grid .horizon-pricing-card{ flex:1 1 280px; max-width:380px; margin:0; }
 .horizon-page .horizon-pricing-name{ margin:0 0 6px 0; font-size:15px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
 .horizon-page .horizon-pricing-note{ margin:18px auto 0 auto; max-width:640px; text-align:center; font-size:14px; line-height:1.5; }
+/* Documents légaux affichés dans la page (CGV, confidentialité, DPA, mentions légales) : ouverts par les liens du pied de page (ancres #cgv, #confidentialite, #dpa, #mentions-legales). */
+.horizon-page .horizon-legal{ display:none; position:fixed; top:0; right:0; bottom:0; left:0; z-index:99999; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; background:#F1F2F9 !important; padding:24px 16px 64px; }
+.horizon-page .horizon-legal:target{ display:block; }
+.horizon-page .horizon-legal-inner{ max-width:800px; margin:0 auto; background:#FFFFFF !important; border:1px solid #E4E5F1; border-radius:16px; padding:32px 40px 36px; color:#181A2E !important; font-size:15.5px; line-height:1.65; text-align:left; }
+.horizon-page .horizon-legal-inner *{ box-sizing:border-box; }
+.horizon-page .horizon-legal h2{ margin:6px 0 4px; font-size:28px !important; line-height:1.25; color:#181A2E !important; text-align:left; }
+.horizon-page .horizon-legal h3{ margin:30px 0 8px; font-size:18px !important; line-height:1.35; color:#181A2E !important; text-align:left; }
+.horizon-page .horizon-legal p, .horizon-page .horizon-legal li{ margin:10px 0; font-size:15.5px !important; line-height:1.65; color:#181A2E !important; text-align:left; }
+.horizon-page .horizon-legal ul{ margin:8px 0 8px 4px; padding-left:22px; list-style:disc; }
+.horizon-page .horizon-legal ul ul{ list-style:circle; }
+.horizon-page .horizon-legal .horizon-legal-date{ margin:0 0 18px; font-size:13px !important; color:#5B5E7E !important; }
+.horizon-page .horizon-legal .horizon-legal-item{ padding-left:2.6em; text-indent:-2.6em; }
+.horizon-page .horizon-legal a{ color:#4338CA !important; text-decoration:underline !important; word-break:break-word; }
+.horizon-page .horizon-legal a.horizon-legal-close{ display:inline-block; margin:0 0 14px; padding:8px 14px; border:1.5px solid #4F46E5; border-radius:10px; background:#FFFFFF !important; color:#4F46E5 !important; font-weight:600; text-decoration:none !important; }
+.horizon-page .horizon-legal a.horizon-legal-close:hover{ background:#EEF0FF !important; }
+.horizon-page .horizon-legal-table{ margin:14px 0; overflow-x:auto; }
+.horizon-page .horizon-legal table{ width:100%; border-collapse:collapse; font-size:14px; }
+.horizon-page .horizon-legal th, .horizon-page .horizon-legal td{ padding:9px 12px; border:1px solid #D9DBEA; text-align:left; vertical-align:top; font-size:14px !important; color:#181A2E !important; }
+.horizon-page .horizon-legal th{ background:#EEF0FF; font-weight:700; }
+@media (max-width:640px){ .horizon-page .horizon-legal{ padding:12px 8px 48px; } .horizon-page .horizon-legal-inner{ padding:20px 16px 26px; border-radius:12px; } .horizon-page .horizon-legal h2{ font-size:23px !important; } }
 </style>
 </head>
 <body class="home wp-singular page-template-default page page-id-13 wp-theme-Horizon">
@@ -178,7 +198,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
           <p>Chiffre d'affaires, coût réel, marge, objectifs — un coup d'œil chaque matin suffit.</p>
         </div>
         <div class="horizon-feature-card">
-          <div class="horizon-feature-icon"><svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><rect width="34" height="34" rx="9" fill="url(#logoGrad)"/><path d="M9.5 21.5A7.5 7.5 0 0 1 24.5 21.5Z" fill="white"/><rect x="5.5" y="21.5" width="23" height="2.4" rx="1.2" fill="white"/><defs><linearGradient id="logoGrad" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs></svg></div>
+          <div class="horizon-feature-icon"><svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><rect width="34" height="34" rx="9" fill="url(#logoGrad2)"/><path d="M9.5 21.5A7.5 7.5 0 0 1 24.5 21.5Z" fill="white"/><rect x="5.5" y="21.5" width="23" height="2.4" rx="1.2" fill="white"/><defs><linearGradient id="logoGrad2" x1="0" y1="0" x2="34" y2="34" gradientUnits="userSpaceOnUse"><stop stop-color="#6366F1"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs></svg></div>
           <h3>Multi-utilisateurs</h3>
           <p>Avec la formule Équipe, jusqu'à 10 membres travaillent sur les mêmes données, en temps réel, avec des rôles admin/membre.</p>
         </div>
@@ -250,7 +270,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <section class="horizon-for-who">
     <div class="horizon-for-who-inner">
       <h2>Pour qui ?</h2>
-      <p>Horizon s'adresse aux TPE/PME, aux freelances qui facturent au forfait, et à toute société qui veut professionnaliser son suivi de rentabilité sans s'encombrer d'un logiciel de gestion trop lourd.</p>
+      <p>Horizon s'adresse aux TPE/PME, aux freelances qui facturent au forfait, et à toute société qui veut professionnaliser son suivi de rentabilité sans s'encombrer d'un logiciel de gestion trop lourd. Horizon est réservé aux professionnels.</p>
       <div class="horizon-tags">
         <span class="horizon-tag">Agences</span>
         <span class="horizon-tag">Freelances</span>
@@ -302,7 +322,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       Essayer Horizon gratuitement →
     </a>
   </section>
-<footer class="horizon-footer">
+<footer class="horizon-footer" id="horizon-footer">
   <div class="horizon-footer-inner">
 
     <div class="horizon-footer-main">
@@ -315,10 +335,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <nav class="horizon-footer-links">
           <!-- Calculateur (ajout) : à retirer si la page calculateur n'est pas publiée -->
           <a href="calculateur-horizon.html">Calculateur</a>
-          <a href="docs/cgv-Horizon.pdf" target="_blank" rel="noopener">CGV</a>
-          <a href="docs/politique-confidentialite-Horizon.pdf" target="_blank" rel="noopener">Confidentialité</a>
-          <a href="docs/dpa-Horizon.pdf" target="_blank" rel="noopener">DPA</a>
-          <a href="docs/mentions-legales-Horizon.pdf" target="_blank" rel="noopener">Mentions légales</a>
+          <a href="#cgv">CGV</a>
+          <a href="#confidentialite">Confidentialité</a>
+          <a href="#dpa">DPA</a>
+          <a href="#mentions-legales">Mentions légales</a>
         </nav>
 
         <p class="horizon-footer-copy">
@@ -346,6 +366,188 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     </div>
   </div>
 </footer>
+
+  <!-- DOCUMENTS LÉGAUX (affichés dans la page) -->
+  <section class="horizon-legal" id="cgv" aria-label="Conditions Générales de Vente">
+    <div class="horizon-legal-inner">
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+      <h2>Conditions Générales de Vente (CGV) — Horizon</h2>
+      <p class="horizon-legal-date">Dernière mise à jour : 28 octobre 2026</p>
+<h3>Article 1 — Objet et champ d’application</h3>
+<p>Les présentes Conditions Générales de Vente (CGV) régissent la vente et l’utilisation de l’abonnement au logiciel <strong>Horizon</strong>, service en ligne de suivi de projets et de calcul de rentabilité, édité par :</p>
+<p><strong>MACOM DIGITALE</strong>, SARL au capital de 350 euros, SIRET <strong>989 656 186 00016</strong>, siège social : <strong>22 Rue de Pont Malo, 56150 Baud</strong>, représentée par Alexis Le Guével, en qualité de Gérant, ci-après « l’Éditeur ».</p>
+<p>Toute souscription à Horizon implique l’acceptation pleine et entière des présentes CGV par le client, ci-après « le Client » ou « l’Utilisateur ».</p>
+<p>Horizon est réservé aux professionnels (entreprises, indépendants, freelances) qui l’utilisent pour les besoins de leur activité professionnelle. Il n’est pas proposé aux consommateurs. En souscrivant, le Client déclare agir à titre professionnel.</p>
+<h3>Article 2 — Description du service</h3>
+<p>Horizon est un logiciel en ligne (SaaS) permettant notamment :</p>
+<ul><li>Le suivi du temps de travail par projet</li><li>Le calcul automatique de la marge et de la rentabilité</li><li>La gestion de clients, devis et factures</li><li>Le suivi de tâches</li><li>Un tableau de bord de pilotage</li></ul>
+<p>L’Éditeur se réserve le droit de faire évoluer les fonctionnalités du service, sans que cela ne constitue une modification substantielle justifiant la résiliation par le Client, sauf suppression d’une fonctionnalité essentielle au bon fonctionnement du service pour son usage.</p>
+<h3>Article 3 — Tarifs et modalités de paiement</h3>
+<p class="horizon-legal-item"><strong>3.1  Formules et prix.</strong> Horizon est proposé par abonnement, pour une entreprise, en deux formules selon le nombre de membres : <strong>Solo</strong> (1 membre) et <strong>Équipe</strong> (jusqu’à 10 membres). Les prix en vigueur sont ceux affichés au moment de la souscription.</p>
+<div class="horizon-legal-table"><table><tr><th><strong>Formule</strong></th><th><strong>Membres inclus</strong></th><th><strong>Facturation</strong></th><th><strong>Prix HT</strong></th><th><strong>Prix TTC</strong></th></tr><tr><td>Solo</td><td>1</td><td>mensuelle</td><td>10,00 €</td><td>12,00 €</td></tr><tr><td>Solo</td><td>1</td><td>annuelle</td><td>96,00 €</td><td>115,20 €</td></tr><tr><td>Solo</td><td>1</td><td>annuelle de lancement</td><td>84,00 €</td><td>100,80 €</td></tr><tr><td>Équipe</td><td>10</td><td>mensuelle</td><td>24,17 €</td><td>29,00 €</td></tr><tr><td>Équipe</td><td>10</td><td>annuelle</td><td>232,00 €</td><td>278,40 €</td></tr><tr><td>Équipe</td><td>10</td><td>annuelle de lancement</td><td>203,00 €</td><td>243,60 €</td></tr></table></div>
+<p>Les prix TTC incluent la TVA au taux de 20 %. Le nombre de membres inclus dépend de la formule. Le Client peut passer de la formule Solo à la formule Équipe à tout moment depuis son espace de compte. Le changement prend effet immédiatement et la différence de prix est facturée au prorata de la période restante.</p>
+<p class="horizon-legal-item"><strong>3.2  Essai gratuit.</strong> Chaque nouveau Client bénéficie de 7 jours d’essai gratuit. Une carte bancaire est demandée à l’inscription pour activer l’essai. Aucun prélèvement n’a lieu pendant l’essai. À l’issue des 7 jours, l’abonnement choisi devient payant et le premier paiement est prélevé, sauf résiliation avant la fin de l’essai.</p>
+<p class="horizon-legal-item"><strong>3.3  Moyen de paiement.</strong> Le paiement s’effectue uniquement par carte bancaire, par l’intermédiaire du prestataire de paiement Stripe. L’Éditeur ne conserve pas les numéros de carte.</p>
+<p class="horizon-legal-item"><strong>3.4  Facturation.</strong> Le premier paiement est exigible à la fin de l’essai. Les paiements suivants sont prélevés à l’avance, à la même date : chaque mois pour la formule mensuelle, chaque année pour les formules annuelles. Une facture et un reçu sont envoyés par e-mail à chaque paiement.</p>
+<p class="horizon-legal-item"><strong>3.5  Offre de lancement.</strong> Jusqu’au 31 janvier 2027 inclus, les formules annuelles sont proposées à prix réduit : Solo à 84,00 € HT (100,80 € TTC) au lieu de 96,00 € HT (115,20 € TTC) ; Équipe à 203,00 € HT (243,60 € TTC) au lieu de 232,00 € HT (278,40 € TTC). Ce prix s’applique à la première période annuelle seulement. À chaque renouvellement suivant, le tarif annuel en vigueur s’applique.</p>
+<p class="horizon-legal-item"><strong>3.6  Évolution des tarifs.</strong> L’Éditeur peut modifier ses tarifs. Le nouveau tarif s’applique à compter du renouvellement qui suit un préavis d’au moins 30 jours, communiqué par e-mail ou dans l’application. Le Client peut résilier avant cette date. Une période déjà payée n’est jamais modifiée.</p>
+<p class="horizon-legal-item"><strong>3.7  Défaut de paiement.</strong> En cas d’échec du prélèvement, l’Éditeur renouvelle la tentative pendant 14 jours maximum et prévient le Client par e-mail. Faute de régularisation, l’abonnement est résilié et l’accès suspendu, sans préjudice des sommes dues.</p>
+<h3>Article 4 — Durée, renouvellement et résiliation</h3>
+<p class="horizon-legal-item"><strong>4.1  Durée.</strong> L’abonnement est souscrit pour un mois (formule mensuelle) ou pour un an (formules annuelles), à compter du premier paiement qui suit l’essai gratuit. Il est reconduit tacitement pour une durée identique, sauf résiliation.</p>
+<p class="horizon-legal-item"><strong>4.2  Résiliation par le Client.</strong> Le Client peut résilier à tout moment depuis son espace de compte (« Gérer mon abonnement »), sans préavis. La résiliation prend effet à la fin de la période déjà payée, mois ou année : le Client garde son accès jusqu’à cette date. Une résiliation avant la fin de l’essai gratuit évite tout prélèvement.</p>
+<p class="horizon-legal-item"><strong>4.3  Remboursement.</strong> Toute période commencée est due. Aucun remboursement au prorata n’est effectué pour la période entamée, sauf garantie ci-dessous ou obligation légale.</p>
+<p class="horizon-legal-item"><strong>4.4  Garantie de remboursement.</strong> Pour les formules annuelles, le Client peut demander le remboursement de son premier paiement annuel dans les 30 jours qui suivent ce paiement, sans avoir à justifier de motif, en écrivant à <a href="mailto:support@horizon-suivi-projets.fr">support@horizon-suivi-projets.fr</a>. Le remboursement est effectué par le même moyen de paiement.</p>
+<p class="horizon-legal-item"><strong>4.5  Résiliation par l’Éditeur.</strong> L’Éditeur se réserve le droit de résilier l’abonnement d’un Client en cas de manquement grave aux présentes CGV (usage frauduleux, impayé non régularisé après relance par e-mail).</p>
+<p class="horizon-legal-item"><strong>4.6  </strong>Rappel avant renouvellement annuel. Avant chaque renouvellement d’une formule annuelle, l’Éditeur informe le Client par e-mail, entre trois mois et un mois avant l’échéance, de la possibilité de ne pas reconduire l’abonnement.</p>
+<h3>Article 5 — Droit de rétractation</h3>
+<p>Horizon étant réservé aux professionnels (article 1), le droit de rétractation que le Code de la consommation accorde aux consommateurs ne s’applique pas à l’abonnement. Le Client bénéficie en revanche de l’essai gratuit de 7 jours (article 3.2) et, pour les formules annuelles, de la garantie de remboursement prévue à l’article 4.4.</p>
+<h3>Article 6 — Données du Client</h3>
+<p>L’utilisation d’Horizon implique le traitement de données personnelles et professionnelles, dont les modalités sont décrites dans la <strong>Politique de confidentialité</strong>, document distinct et consultable à l’adresse <a href="https://horizon-suivi-projets.fr/#confidentialite">https://horizon-suivi-projets.fr/#confidentialite</a>. Le traitement des données que le Client saisit sur ses propres clients est encadré par le contrat de sous-traitance RGPD, consultable à l’adresse <a href="https://horizon-suivi-projets.fr/#dpa">https://horizon-suivi-projets.fr/#dpa</a>.</p>
+<p>Le Client reste seul responsable de la licéité et de l’exactitude des données qu’il saisit dans l’application (notamment les données concernant ses propres clients).</p>
+<h3>Article 7 — Disponibilité et responsabilité</h3>
+<ul><li>L’Éditeur s’efforce d’assurer un accès continu au service, sans garantie de disponibilité absolue (maintenance, incidents techniques indépendants de sa volonté notamment liés à ses hébergeurs).</li><li>L’Éditeur ne saurait être tenu responsable des pertes de données résultant d’une mauvaise utilisation du service par le Client, ni des conséquences indirectes (perte de chiffre d’affaires, perte de clientèle...) liées à une indisponibilité.</li><li>Le Client est seul responsable de la conservation d’une copie de ses données importantes (export disponible depuis l’application).</li><li>La responsabilité de l’Éditeur, si elle est engagée, est limitée au montant payé par le Client au cours des 12 derniers mois.</li></ul>
+<h3>Article 8 — Propriété intellectuelle</h3>
+<p>Le logiciel Horizon, sa structure, son design et son contenu restent la propriété exclusive de MACOM DIGITALE. La souscription à un abonnement n’emporte aucun transfert de propriété intellectuelle au profit du Client, qui bénéficie uniquement d’un droit d’usage pour la durée de son abonnement.</p>
+<p>Les données saisies par le Client (clients, projets, documents) restent sa propriété.</p>
+<h3>Article 9 — Modification des CGV</h3>
+<p>L’Éditeur peut modifier les présentes CGV à tout moment. Les Clients en seront informés par email ou notification dans l’application, au moins 30 jours avant leur entrée en vigueur pour les Clients déjà abonnés.</p>
+<h3>Article 10 — Droit applicable et litiges</h3>
+<p>Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut d’accord, le litige sera porté devant les tribunaux compétents de <strong>Lorient</strong> (Tribunal de commerce de Lorient, 3 rue Benjamin Delessert, CS 10426, 56104 Lorient Cedex — compétent pour le siège social situé à Baud, 56), sauf disposition d’ordre public contraire.</p>
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+    </div>
+  </section>
+
+  <section class="horizon-legal" id="confidentialite" aria-label="Politique de confidentialité">
+    <div class="horizon-legal-inner">
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+      <h2>Politique de confidentialité — Horizon</h2>
+      <p class="horizon-legal-date">Dernière mise à jour : 28 octobre 2026</p>
+<h3>1. Qui sommes-nous</h3>
+<p>Horizon est édité par <strong>MACOM DIGITALE</strong>, SARL au capital de 350 euros, immatriculée sous le numéro SIRET <strong>989 656 186 00016</strong> (RCS Lorient 989 656 186), dont le siège social est situé <strong>22 Rue de Pont Malo, 56150 Baud</strong>, représentée par Alexis Le Guével, en qualité de Gérant.</p>
+<p>Contact pour toute question relative aux données personnelles : <strong><a href="mailto:support@horizon-suivi-projets.fr">support@horizon-suivi-projets.fr</a></strong>. Nous n’avons pas désigné de délégué à la protection des données : cette adresse reçoit toutes vos demandes.</p>
+<h3>2. Deux rôles différents selon le type de donnée</h3>
+<p>Cette politique distingue deux cas, parce qu’Horizon héberge deux types de données différentes :</p>
+<ul><li><strong>Vos données de compte</strong> (email, nom, mot de passe, nom de votre entreprise) : nous en sommes <strong>responsables du traitement</strong>, au sens du RGPD.</li><li><strong>Les données que vous saisissez dans l’application</strong> (noms de vos clients, contacts, montants, temps de travail...) : ce sont <strong>vos propres données professionnelles</strong>, vous en restez responsable. Nous agissons uniquement comme <strong>sous-traitant technique</strong>, en hébergeant ces données de façon sécurisée pour votre compte, sans les utiliser à d’autres fins que le fonctionnement du service.</li></ul>
+<p>Un contrat de sous-traitance (« DPA »), conforme à l’article 28 du RGPD, encadre ce second cas. Il est accepté à la création du compte et consultable à l’adresse <a href="https://horizon-suivi-projets.fr/#dpa">https://horizon-suivi-projets.fr/#dpa</a>.</p>
+<h3>3. Données que nous collectons</h3>
+<p><strong>À la création de compte :</strong></p>
+<ul><li>Nom complet</li><li>Adresse email</li><li>Mot de passe (stocké de façon chiffrée, jamais en clair, jamais consultable par nous)</li><li>Nom de votre entreprise</li><li>Formule d’abonnement choisie, date d’acceptation des CGV et du contrat de sous-traitance</li></ul>
+<p>Lors du paiement de l’abonnement :</p>
+<ul><li>Les paiements sont traités par Stripe. Nous ne recevons ni ne conservons votre numéro de carte bancaire. Nous conservons l’identifiant client Stripe, la formule, le statut et les dates de votre abonnement.</li></ul>
+<p><strong>Dans l’usage normal de l’application, à votre initiative :</strong></p>
+<ul><li>Noms et coordonnées de vos clients (que vous choisissez de renseigner)</li><li>Données de projets, devis, factures, temps de travail, montants</li><li>Messages internes que vous rédigez dans l’espace « Messagerie », et, si la fonction est activée, les fichiers joints à ces messages</li><li>Les PDF et photos que vous importez dans « Documents » sont lus dans votre navigateur et ne sont pas conservés : seules les informations extraites (type, montant, date, référence) et le nom du fichier sont enregistrés.</li></ul>
+<p><strong>Automatiquement, à des fins techniques :</strong></p>
+<ul><li>Horodatage des connexions et des actions (pour la sécurité et le bon fonctionnement du service)</li><li>Journaux techniques de nos prestataires (adresse IP, dates et heures de connexion)</li><li>E-mails de service : confirmation d’inscription et réinitialisation du mot de passe</li></ul>
+<p>Nous n’utilisons <strong>aucun cookie publicitaire ou de traçage tiers</strong>. L’application enregistre dans votre navigateur votre session de connexion et vos préférences d’affichage, strictement nécessaires à son fonctionnement. Pendant le paiement, la page sécurisée de Stripe peut déposer ses propres cookies.</p>
+<p>Les données de compte et d’abonnement sont nécessaires pour utiliser Horizon : sans elles, nous ne pouvons pas fournir le service. Aucune décision vous concernant n’est prise de manière entièrement automatisée.</p>
+<h3>4. Pourquoi nous utilisons ces données, et sur quelle base légale</h3>
+<div class="horizon-legal-table"><table><tr><th><strong>Finalité</strong></th><th><strong>Base légale</strong></th></tr><tr><td>Faire fonctionner votre compte et l’application</td><td>Exécution du contrat</td></tr><tr><td>Vous permettre de récupérer l’accès à votre compte et vous envoyer les e-mails de service</td><td>Exécution du contrat</td></tr><tr><td>Gérer votre abonnement et sa facturation</td><td>Exécution du contrat</td></tr><tr><td>Assurer la sécurité et prévenir les usages frauduleux</td><td>Intérêt légitime</td></tr><tr><td>Vous contacter en cas de nécessité liée au service (mise à jour importante, incident de sécurité)</td><td>Exécution du contrat, intérêt légitime</td></tr><tr><td>Respecter nos obligations comptables et fiscales</td><td>Obligation légale</td></tr></table></div>
+<p>Nous n’utilisons <strong>jamais</strong> vos données à des fins commerciales, publicitaires, ou de revente à des tiers.</p>
+<h3>5. Qui héberge et reçoit ces données</h3>
+<p>Vos données sont traitées par les prestataires suivants, qui agissent pour notre compte :</p>
+<div class="horizon-legal-table"><table><tr><th><strong>Prestataire</strong></th><th><strong>Rôle</strong></th><th><strong>Localisation</strong></th></tr><tr><td>Supabase</td><td>Base de données, authentification, stockage de fichiers. C’est ici que transitent l’ensemble des données personnelles (comptes, clients, projets...).</td><td>Union européenne (Francfort, Allemagne)</td></tr><tr><td>OVHcloud</td><td>Hébergement du fichier de l’application et du site, messagerie du support</td><td>France (Gravelines)</td></tr><tr><td>Stripe</td><td>Paiement et gestion de l’abonnement</td><td>Union européenne (Stripe Payments Europe, Irlande)</td></tr><tr><td>Resend</td><td>Envoi des e-mails de service</td><td>Union européenne (Irlande)</td></tr><tr><td>GitHub</td><td>Hébergement du site de présentation</td><td>États-Unis</td></tr></table></div>
+<p>Lors du chargement de l’application, la police de caractères Inter (Google Fonts) et des bibliothèques logicielles (réseau jsDelivr) sont chargées depuis des services tiers : votre adresse IP leur est transmise.</p>
+<p>Nous ne vendons, ne louons et ne partageons vos données avec aucun tiers à des fins commerciales.</p>
+<h3>6. Transferts hors de l’Union européenne</h3>
+<p>Certains prestataires sont des sociétés de droit américain (Stripe, Resend, GitHub, Supabase) ou peuvent traiter des données aux États-Unis. Ces transferts sont encadrés par les clauses contractuelles types de la Commission européenne ou par le cadre de protection des données UE–États-Unis, selon le prestataire. Vous pouvez en obtenir une copie en écrivant à <a href="mailto:support@horizon-suivi-projets.fr">support@horizon-suivi-projets.fr</a>.</p>
+<h3>7. Durée de conservation</h3>
+<ul><li>Les données de votre compte et de votre entreprise sont conservées tant que votre compte est actif.</li><li>En cas de suppression d’un élément dans l’application (client, projet, document), celui-ci passe par une <strong>corbeille</strong> où il reste récupérable, avant suppression définitive à votre initiative.</li><li>En cas de suppression de votre compte, vos données sont supprimées sous 30 jours, y compris dans nos sauvegardes, qui sont purgées dans un délai maximal de 4 semaines, sauf obligation légale de conservation plus longue.</li><li>Les factures et pièces comptables liées à votre abonnement sont conservées 10 ans (obligation comptable).</li><li>Les e-mails échangés avec le support sont conservés 3 ans à compter du dernier échange.</li><li>Les journaux d’envoi des e-mails de service sont conservés par notre prestataire d’envoi pendant une durée limitée, selon sa propre politique.</li></ul>
+<h3>8. Sécurité</h3>
+<ul><li>Mots de passe chiffrés</li><li>Accès aux données cloisonné strictement par entreprise : aucune entreprise cliente ne peut voir les données d’une autre</li><li>Accès aux fonctions sensibles (suppression, paramètres) réservé aux comptes « Administrateur » de chaque entreprise</li><li>Connexion chiffrée (HTTPS) et double authentification disponible</li><li>Données chiffrées au repos (AES-256) et pendant leur transfert par notre hébergeur de base de données</li><li>Fichiers joints, si la fonction est activée : espace privé, avec des liens d’accès temporaires</li><li>Paiement : votre carte bancaire n’est jamais vue ni conservée par Horizon</li><li>Sauvegardes hebdomadaires des données, conservées 4 semaines</li></ul>
+<h3>9. Vos droits</h3>
+<p>Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation du traitement, de portabilité et d’opposition sur vos données personnelles. Vous pouvez exercer ces droits en nous contactant à <strong><a href="mailto:support@horizon-suivi-projets.fr">support@horizon-suivi-projets.fr</a></strong>. Nous répondons dans un délai d’un mois.</p>
+<p>Vous disposez également du droit d’introduire une réclamation auprès de la CNIL (www.cnil.fr) si vous estimez que vos droits ne sont pas respectés.</p>
+<h3>10. Modifications de cette politique</h3>
+<p>Cette politique peut être mise à jour. En cas de changement significatif, nous en informerons les utilisateurs par email ou notification dans l’application.</p>
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+    </div>
+  </section>
+
+  <section class="horizon-legal" id="dpa" aria-label="Contrat de sous-traitance RGPD">
+    <div class="horizon-legal-inner">
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+      <h2>Contrat de sous-traitance RGPD (DPA) — Horizon</h2>
+      <p class="horizon-legal-date">Dernière mise à jour : 28 octobre 2026</p>
+<p>Entre <strong>[Nom de l’entreprise cliente]</strong>, ci-après « le Client » ou « le Responsable de traitement », c’est-à-dire l’entreprise qui crée le compte Horizon et accepte le présent contrat,</p>
+<p>Et <strong>MACOM DIGITALE</strong>, SARL au capital de 350 euros, SIRET 989 656 186 00016, siège social 22 Rue de Pont Malo, 56150 Baud, représentée par Alexis Le Guével, Gérant, ci-après « le Sous-traitant »,</p>
+<p>Il a été convenu ce qui suit, en application de l’article 28 du règlement (UE) 2016/679 du 27 avril 2016 (« RGPD »).</p>
+<h3>Article 1 — Objet</h3>
+<p>Le présent contrat encadre le traitement des données à caractère personnel que le Client saisit dans l’application <strong>Horizon</strong> (noms, coordonnées et informations relatives aux propres clients du Client), pour lesquelles le Sous-traitant agit exclusivement sur instruction du Client.</p>
+<p>Ce contrat est distinct des CGV et de la Politique de confidentialité d’Horizon : il concerne uniquement le Traitement n°2 décrit dans le registre des traitements de MACOM DIGITALE (données saisies par le Client sur ses propres clients), et non la gestion du compte du Client lui-même (pour laquelle MACOM DIGITALE est responsable de traitement).</p>
+<p>Dans le cadre de leurs relations contractuelles, les parties s’engagent à respecter la réglementation applicable au traitement de données à caractère personnel, en particulier le RGPD.</p>
+<h3>Article 2 — Modalités d’acceptation</h3>
+<p>Le présent contrat est accepté par le Client par voie électronique, au moment de la création de son compte sur l’application Horizon, via une case à cocher dédiée mentionnant explicitement son acceptation des Conditions Générales de Vente et du présent contrat de sous-traitance RGPD.</p>
+<p>Cette acceptation vaut signature électronique au sens de l’article 1367 du Code civil. La date et l’heure précises de cette acceptation sont enregistrées et conservées par le Sous-traitant, et peuvent être communiquées au Client sur simple demande.</p>
+<h3>Article 3 — Description du traitement</h3>
+<div class="horizon-legal-table"><table><tr><td><strong>Nature des opérations</strong></td><td>Hébergement, stockage, mise à disposition via l’application</td></tr><tr><td><strong>Finalité</strong></td><td>Permettre au Client de gérer ses projets, clients, devis/factures et temps de travail</td></tr><tr><td><strong>Durée</strong></td><td>Pendant toute la durée de l’abonnement, jusqu’à suppression des données par le Client</td></tr><tr><td><strong>Personnes concernées</strong></td><td>Les clients professionnels du Client (tiers, non-utilisateurs d’Horizon)</td></tr><tr><td><strong>Catégories de données</strong></td><td>Noms, coordonnées de contact, informations de projet, montants, et, si la fonction est activée, fichiers joints aux messages (pouvant contenir des données de tiers)</td></tr><tr><td>Informations mises à disposition par le Client</td><td>Les données que le Client saisit ou importe dans l’application</td></tr></table></div>
+<h3>Article 4 — Obligations du Sous-traitant</h3>
+<p>Le Sous-traitant s’engage à :</p>
+<p class="horizon-legal-item"><strong>4.1  </strong>Traiter les données uniquement pour la finalité décrite à l’article 3 et conformément aux instructions documentées du Client, qui résultent de l’usage de l’application et de ses demandes écrites adressées à <a href="mailto:support@horizon-suivi-projets.fr">support@horizon-suivi-projets.fr</a>. Si le Sous-traitant considère qu’une instruction constitue une violation du RGPD ou d’une autre disposition du droit de l’Union ou d’un État membre relative à la protection des données, il en informe immédiatement le Client.</p>
+<p class="horizon-legal-item"><strong>4.2  </strong>Ne transférer aucune donnée en dehors de l’Union européenne, sauf obligation légale dont il informe le Client avant le traitement, à moins que le droit concerné n’interdise cette information.</p>
+<p class="horizon-legal-item"><strong>4.3  </strong>Garantir la confidentialité des données, notamment via un accès technique restreint à l’équipe MACOM DIGITALE, et veiller à ce que les personnes autorisées à les traiter s’engagent à respecter cette confidentialité et reçoivent la formation nécessaire en matière de protection des données.</p>
+<p class="horizon-legal-item"><strong>4.4  </strong>Prendre en compte, pour ses outils, applications et services, les principes de protection des données dès la conception et de protection des données par défaut.</p>
+<p class="horizon-legal-item"><strong>4.5  </strong>Sous-traitance ultérieure. Le Client autorise le Sous-traitant à faire appel aux sous-traitants ultérieurs listés à l’article 5. Le Sous-traitant informe préalablement et par écrit le Client de tout ajout ou remplacement, en indiquant les activités concernées, l’identité du sous-traitant ultérieur et la date du contrat. Le Client dispose de 30 jours à compter de cette information pour s’y opposer ; sans objection dans ce délai, le changement est accepté, et à défaut d’accord le Client peut résilier son abonnement. Le sous-traitant ultérieur est tenu des mêmes obligations que le Sous-traitant, qui reste pleinement responsable envers le Client de leur exécution.</p>
+<p class="horizon-legal-item"><strong>4.6  </strong>Assister le Client dans le respect de ses propres obligations RGPD, notamment pour répondre aux demandes d’exercice des droits de ses clients : le Sous-traitant lui transmet par e-mail, dès réception, toute demande qu’il reçoit directement.</p>
+<p class="horizon-legal-item"><strong>4.7  </strong>Notifier le Client de toute violation de données concernant ses informations dans les meilleurs délais, et au plus tard 48 heures après en avoir pris connaissance, par e-mail adressé à l’administrateur du compte. La notification est accompagnée de la documentation utile : nature de la violation, catégories et nombre approximatif de personnes et d’enregistrements concernés, conséquences probables, mesures prises ou proposées, et point de contact.</p>
+<p class="horizon-legal-item"><strong>4.8  </strong>Aider le Client à réaliser ses analyses d’impact relatives à la protection des données et, le cas échéant, la consultation préalable de l’autorité de contrôle.</p>
+<p class="horizon-legal-item"><strong>4.9  </strong>Mettre en œuvre les mesures de sécurité suivantes :</p>
+<ul><ul><li>cloisonnement strict des données entre entreprises clientes ;</li><li>mots de passe stockés de façon chiffrée ;</li><li>connexions chiffrées (HTTPS) ;</li><li>accès aux actions sensibles réservé aux comptes « Administrateur » de chaque entreprise, et double authentification disponible ;</li><li>sauvegardes hebdomadaires des données, conservées 4 semaines, permettant de rétablir leur disponibilité en cas d’incident technique ;</li><li>données chiffrées au repos et pendant leur transfert par l’hébergeur de la base de données ;</li><li>revue de ces mesures au moins une fois par an.</li></ul></ul>
+<p class="horizon-legal-item"><strong>4.10  </strong>Supprimer ou restituer l’ensemble des données à la fin de la relation contractuelle, au choix du Client, dans le délai prévu à l’article 7, puis détruire les copies existantes dans ses systèmes, y compris dans les sauvegardes, qui sont purgées dans un délai maximal de 4 semaines, et justifier par écrit de cette destruction sur demande.</p>
+<p class="horizon-legal-item"><strong>4.11  </strong>Délégué à la protection des données : le Sous-traitant n’a pas désigné de délégué. Le point de contact pour toute question relative au présent contrat est <a href="mailto:support@horizon-suivi-projets.fr">support@horizon-suivi-projets.fr</a>.</p>
+<p class="horizon-legal-item"><strong>4.12  </strong>Déclarer tenir par écrit un registre de toutes les catégories d’activités de traitement effectuées pour le compte du Client, conformément à l’article 30, paragraphe 2, du RGPD.</p>
+<p class="horizon-legal-item"><strong>4.13  </strong>Mettre à la disposition du Client la documentation nécessaire pour démontrer le respect de ses obligations, et permettre la réalisation d’audits, y compris des inspections, par le Client ou un auditeur qu’il a mandaté, et y contribuer. Ces audits ont lieu avec un préavis de 30 jours, au plus une fois par an sauf incident avéré, aux frais du Client.</p>
+<h3>Article 5 — Sous-traitants ultérieurs autorisés</h3>
+<div class="horizon-legal-table"><table><tr><th><strong>Sous-traitant</strong></th><th><strong>Rôle</strong></th><th><strong>Localisation</strong></th></tr><tr><td>Supabase</td><td>Hébergement de la base de données, authentification et stockage de fichiers</td><td>Union Européenne (Francfort)</td></tr></table></div>
+<p>Tout changement concernant cette liste suit la procédure prévue à l’article 4.5.</p>
+<h3>Article 6 — Obligations du Client</h3>
+<p>Le Client s’engage à fournir au Sous-traitant les données nécessaires au service, à documenter par écrit toute instruction concernant le traitement, et à veiller au respect du présent contrat par le Sous-traitant, notamment en supervisant le traitement et en réalisant des audits. Il reste seul responsable de :</p>
+<ul><li>S’assurer qu’il dispose d’une base légale pour collecter et traiter les données de ses propres clients</li><li>Informer ses propres clients de l’usage de leurs données conformément au RGPD</li><li>L’exactitude des données qu’il saisit dans l’application</li></ul>
+<h3>Article 7 — Durée et fin du contrat</h3>
+<p>Le présent contrat s’applique pendant toute la durée de l’abonnement du Client à Horizon. À la résiliation de l’abonnement, le Sous-traitant supprime les données du Client dans un délai de 30 jours, sauf demande contraire du Client formulée avant cette échéance. Avant cette échéance, le Client peut exporter ses données depuis l’application (export CSV).</p>
+<h3>Article 8 — Droit applicable</h3>
+<p>Le présent contrat est soumis au droit français.</p>
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+    </div>
+  </section>
+
+  <section class="horizon-legal" id="mentions-legales" aria-label="Mentions légales">
+    <div class="horizon-legal-inner">
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+      <h2>Mentions légales — Horizon</h2>
+      <p class="horizon-legal-date">Dernière mise à jour : 28 octobre 2026</p>
+<h3>Éditeur du site</h3>
+<p>Le site Horizon est édité par :</p>
+<p><strong>MACOM DIGITALE</strong>, SARL au capital social de 350 euros</p>
+<p>Siège social : 22 Rue de Pont Malo, 56150 Baud</p>
+<p>SIRET : 989 656 186 00016</p>
+<p>RCS Lorient 989 656 186 — N° de TVA intracommunautaire : FR39989656186</p>
+<p>Directeur de la publication : Alexis Le Guével, Gérant</p>
+<p>Contact : <a href="mailto:support@horizon-suivi-projets.fr">support@horizon-suivi-projets.fr</a>, téléphone : 07 78 78 63 78</p>
+<h3>Hébergement</h3>
+<p><strong>Site vitrine (pages de présentation)</strong> hébergé par GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+<p><strong>Application Horizon</strong> hébergée par OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (serveurs situés à Gravelines, France) — base de données hébergée par Supabase, sur des serveurs situés dans l’Union européenne (Francfort, Allemagne).</p>
+<h3>Propriété intellectuelle</h3>
+<p>L’ensemble des éléments présents sur ce site (textes, logos, graphismes, structure) est la propriété exclusive de MACOM DIGITALE, sauf mention contraire. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation préalable, est interdite.</p>
+<h3>Données personnelles</h3>
+<p>Le traitement des données personnelles collectées sur ce site et via l’application Horizon est détaillé dans notre Politique de confidentialité, consultable à l’adresse <a href="https://horizon-suivi-projets.fr/#confidentialite">https://horizon-suivi-projets.fr/#confidentialite</a>.</p>
+<h3>Cookies</h3>
+<p>Ce site n’utilise aucun cookie de traçage ou publicitaire. Lors de l’utilisation de l’application, votre navigateur enregistre votre session de connexion et vos préférences d’affichage, strictement nécessaires au fonctionnement du service. Lors du paiement, la page sécurisée de Stripe peut déposer ses propres cookies.</p>
+<h3>Litiges</h3>
+<p>En cas de litige, une solution amiable sera recherchée avant toute action judiciaire. À défaut d’accord, les tribunaux compétents seront ceux de <strong>Lorient</strong> (Tribunal de commerce de Lorient, 3 rue Benjamin Delessert, CS 10426, 56104 Lorient Cedex — compétent pour le siège social situé à Baud, 56), sauf disposition d’ordre public contraire.</p>
+<h3>Crédits</h3>
+<p>Site conçu et développé par MACOM DIGITALE.</p>
+      <a class="horizon-legal-close" href="#horizon-footer">← Fermer</a>
+    </div>
+  </section>
 </div>
+<script>
+/* Échap ferme un document légal et ramène au pied de page. */
+(function(){
+  var ids = {cgv:1, confidentialite:1, dpa:1, 'mentions-legales':1};
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && ids[location.hash.slice(1)]) { location.hash = 'horizon-footer'; }
+  });
+})();
+</script>
 </body>
 </html>
